@@ -1,0 +1,17 @@
+Sub AddManualPageBreakBeforeHeading1()
+'
+'This adds page breaks before all the "hHeading1"s
+'
+'
+    For Each p In ActiveDocument.Paragraphs
+        count = count + 1
+        If p.OutlineLevel = wdOutlineLevel1 Or p.OutlineLevel = wdOutlineLevel2 Then
+            p.Range.Select
+            Selection.HomeKey Unit:=wdLine
+            Selection.MoveLeft Unit:=wdCharacter, count:=1
+            Selection.TypeParagraph
+            Selection.InsertBreak Type:=0
+            Selection.Delete Unit:=wdCharacter, count:=1
+        End If
+    Next
+End Sub

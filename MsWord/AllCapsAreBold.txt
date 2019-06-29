@@ -1,0 +1,18 @@
+Sub AllCapsAreBold()
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    Selection.Find.Replacement.Font.Bold = True
+    With Selection.Find
+        .text = "([A-Z]{2}[A-Z ]{1,50})"
+        .Replacement.text = "\1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchAllWordForms = False
+        .MatchSoundsLike = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+End Sub
