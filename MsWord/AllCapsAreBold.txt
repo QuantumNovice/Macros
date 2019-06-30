@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Sub AllCapsAreBold()
     Selection.Find.ClearFormatting
     Selection.Find.Replacement.ClearFormatting
@@ -15,4 +16,23 @@ Sub AllCapsAreBold()
         .MatchWildcards = True
     End With
     Selection.Find.Execute Replace:=wdReplaceAll
+=======
+Sub AllCapsAreBold()
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    Selection.Find.Replacement.Font.Bold = True
+    With Selection.Find
+        .text = "([A-Z]{2}[A-Z ]{1,50})"
+        .Replacement.text = "\1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = True
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchAllWordForms = False
+        .MatchSoundsLike = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+>>>>>>> daa931be89e26974d59dbe5bf462446143caa10a
 End Sub

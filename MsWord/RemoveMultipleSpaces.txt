@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Sub RemoveMultipleSpaces()
     'Remove spaces and tabs at the end of paragraphs
     Selection.Find.ClearFormatting
@@ -29,4 +30,37 @@ Sub RemoveMultipleSpaces()
     End With
     Selection.Find.Execute
     Selection.Find.Execute Replace:=wdReplaceAll
+=======
+Sub RemoveMultipleSpaces()
+    'Remove spaces and tabs at the end of paragraphs
+    Selection.Find.ClearFormatting
+    With Selection.Find
+        .text = "[ ^09]{1,200}[^013]"
+        .Replacement.text = "^p"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchAllWordForms = False
+        .MatchSoundsLike = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute Replace:=wdReplaceAll
+    
+    Selection.Find.ClearFormatting
+    Selection.Find.Replacement.ClearFormatting
+    With Selection.Find
+        .text = " {2,200}"
+        .Replacement.text = " "
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = True
+    End With
+    Selection.Find.Execute
+    Selection.Find.Execute Replace:=wdReplaceAll
+>>>>>>> daa931be89e26974d59dbe5bf462446143caa10a
 End Sub
